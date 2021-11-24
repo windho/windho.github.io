@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Gridea+GitHub Pages：无法同步的问题 | Wind</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1637735165772">
+<link rel="stylesheet" href="http://localhost:4000/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="在发现Gridea之前，我尝试了好几种个人博客搭建策略：Hexo+Github Pages，wordpress+腾讯云服务器……
+均以失败告终。
+首先在服务器方面，GitHub由于众所周知的原因在国内访问速度极慢乃至无法访问。而国内服务器，..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://localhost:4000">
+        <img src="http://localhost:4000/images/avatar.png?v=1637735165772" class="site-logo">
+        <h1 class="site-title">Wind</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      Say yes to life.
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Gridea+GitHub Pages：无法同步的问题</h2>
+            <div class="post-date">2021-11-24</div>
+            
+            <div class="post-content" v-pre>
+              <p>在发现Gridea之前，我尝试了好几种个人博客搭建策略：Hexo+Github Pages，wordpress+腾讯云服务器……<br>
+均以失败告终。<br>
+首先在服务器方面，GitHub由于众所周知的原因在国内访问速度极慢乃至无法访问。而国内服务器，虽然稳定且对国内访问友好，但成本较为高昂，且需要备案等繁琐步骤。<br>
+所以我在兜了一大圈，从Github Pages到购买了腾讯云的学生服务器，再到Coding Pages，最终回到了首选。<br>
+而在博客框架的选择上，则有更多选项：Hexo、Hugo、wordpress、jekyll等。但无一例外，这几个框架的部署都需要Node.js、Git的支撑，对于没有cmd操作经验的新手来说，极易踩坑，而且流程较长。<br>
+我在首次尝试Hexo部署到Github Pages的时候，按照教程一步一步来，不停掉坑。好在有一定的计算机知识，勉强能意识到错误在哪里。但最终仍卡在了 hexo d这一步。原因是网络问题，尝试了google到的各种方法都未能解决。<br>
+最后选择了Gridea来部署Github Pages，这也成了我目前唯一成功的方法。</p>
+<h2 id="gridea">Gridea</h2>
+<p>Gridea的图形化操作界面对新手极为友好，没有复杂的cmd命令操作和各种配置，几步就可完成部署。后端页面也简洁美观。<br>
+不过最终仍出现一个问题，无法同步。即便是挂了梯子，却无法对Gridea进行代理。<br>
+所以这边参考了一个大佬的解决方法，利用Github Desktop来曲线救国。<br>
+……</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://localhost:4000/post/wen-zhang/">
+                  <h3 class="post-title">
+                    文章
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>
