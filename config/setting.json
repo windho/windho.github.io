@@ -1,0 +1,27 @@
+{
+  "config": {
+    "branch": "main",
+    "domain": "https://windho.github.io",
+    "email": "windhospace@163.com",
+    "platform": "github",
+    "privateKey": "",
+    "repository": "windho.github.io",
+    "token": "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",
+    "username": "windho"
+  },
+  "comment": {
+    "commentPlatform": "gitalk",
+    "disqusSetting": {
+      "api": "",
+      "apikey": "",
+      "shortname": ""
+    },
+    "gitalkSetting": {
+      "clientId": "",
+      "clientSecret": "",
+      "owner": "",
+      "repository": ""
+    },
+    "showComment": false
+  }
+}
