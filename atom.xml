@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://localhost:4000</id>
     <title>Wind</title>
-    <updated>2021-11-24T06:02:28.956Z</updated>
+    <updated>2021-11-24T06:05:56.424Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="http://localhost:4000"/>
     <link rel="self" href="http://localhost:4000/atom.xml"/>
@@ -10,6 +10,15 @@
     <logo>http://localhost:4000/images/avatar.png</logo>
     <icon>http://localhost:4000/favicon.ico</icon>
     <rights>All rights reserved 2021, Wind</rights>
+    <entry>
+        <title type="html"><![CDATA[文章]]></title>
+        <id>http://localhost:4000/post/wen-zhang/</id>
+        <link href="http://localhost:4000/post/wen-zhang/">
+        </link>
+        <updated>2021-11-24T06:05:31.000Z</updated>
+        <content type="html"><![CDATA[<p>测试</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Test]]></title>
         <id>http://localhost:4000/post/test/</id>
