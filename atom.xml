@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://localhost:4000</id>
     <title>Wind</title>
-    <updated>2021-11-24T06:05:56.424Z</updated>
+    <updated>2021-11-24T06:26:10.299Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="http://localhost:4000"/>
     <link rel="self" href="http://localhost:4000/atom.xml"/>
@@ -10,6 +10,26 @@
     <logo>http://localhost:4000/images/avatar.png</logo>
     <icon>http://localhost:4000/favicon.ico</icon>
     <rights>All rights reserved 2021, Wind</rights>
+    <entry>
+        <title type="html"><![CDATA[Gridea+GitHub Pages：无法同步的问题]]></title>
+        <id>http://localhost:4000/post/grideagithub-pageswu-fa-tong-bu-de-wen-ti/</id>
+        <link href="http://localhost:4000/post/grideagithub-pageswu-fa-tong-bu-de-wen-ti/">
+        </link>
+        <updated>2021-11-24T06:08:25.000Z</updated>
+        <content type="html"><![CDATA[<p>在发现Gridea之前，我尝试了好几种个人博客搭建策略：Hexo+Github Pages，wordpress+腾讯云服务器……<br>
+均以失败告终。<br>
+首先在服务器方面，GitHub由于众所周知的原因在国内访问速度极慢乃至无法访问。而国内服务器，虽然稳定且对国内访问友好，但成本较为高昂，且需要备案等繁琐步骤。<br>
+所以我在兜了一大圈，从Github Pages到购买了腾讯云的学生服务器，再到Coding Pages，最终回到了首选。<br>
+而在博客框架的选择上，则有更多选项：Hexo、Hugo、wordpress、jekyll等。但无一例外，这几个框架的部署都需要Node.js、Git的支撑，对于没有cmd操作经验的新手来说，极易踩坑，而且流程较长。<br>
+我在首次尝试Hexo部署到Github Pages的时候，按照教程一步一步来，不停掉坑。好在有一定的计算机知识，勉强能意识到错误在哪里。但最终仍卡在了 hexo d这一步。原因是网络问题，尝试了google到的各种方法都未能解决。<br>
+最后选择了Gridea来部署Github Pages，这也成了我目前唯一成功的方法。</p>
+<h2 id="gridea">Gridea</h2>
+<p>Gridea的图形化操作界面对新手极为友好，没有复杂的cmd命令操作和各种配置，几步就可完成部署。后端页面也简洁美观。<br>
+不过最终仍出现一个问题，无法同步。即便是挂了梯子，却无法对Gridea进行代理。<br>
+所以这边参考了一个大佬的解决方法，利用Github Desktop来曲线救国。<br>
+……</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[文章]]></title>
         <id>http://localhost:4000/post/wen-zhang/</id>
