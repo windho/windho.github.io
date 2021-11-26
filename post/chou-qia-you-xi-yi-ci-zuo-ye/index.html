@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>抽卡游戏Python实现 | Wind</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://windho.github.io/favicon.ico?v=1637894807601">
+<link rel="stylesheet" href="https://windho.github.io/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="余岩老师生物编程课程考核的一个小作业：
+
+编写一个抽卡游戏。在抽卡游戏中，N, R, SR, SSR 四种类别的卡的稀有程度依次提高，其抽取的概率分别为0.725，0.25，0.02，0.005，依照概率随机抽取。初始有998金，每次抽卡花..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://windho.github.io">
+        <img src="https://windho.github.io/images/avatar.png?v=1637894807601" class="site-logo">
+        <h1 class="site-title">Wind</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      Say yes to life.
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://windho.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">抽卡游戏Python实现</h2>
+            <div class="post-date">2021-11-26</div>
+            
+            <div class="post-content" v-pre>
+              <p>余岩老师生物编程课程考核的一个小作业：</p>
+<blockquote>
+<p>编写一个抽卡游戏。在抽卡游戏中，N, R, SR, SSR 四种类别的卡的稀有程度依次提高，其抽取的概率分别为0.725，0.25，0.02，0.005，依照概率随机抽取。初始有998金，每次抽卡花费100金，显示本次抽到的卡，抽卡结果统计（每种卡抽到多少张）以及剩余的金币，如果剩下的金币不够一次抽取，则提示用户充值，如果用户充值为空则退出游戏。退出时将抽卡结果统计（每种卡抽到多少张）以及剩余的金币数保存到文件中，下次运行时读取之前保存的结果，继续进行抽卡和统计。</p>
+</blockquote>
+<p>可以看到，代码要实现的功能主要有：</p>
+<ul>
+<li>抽卡系统：根据概率随机抽卡</li>
+<li>金币系统：每次抽卡消耗一定金币，金币不足以抽卡时提示充值
+<ul>
+<li>为空结束程序</li>
+<li>为正整数值继续抽卡（我自己设定的只能是正整数）</li>
+</ul>
+</li>
+<li>存档系统：要求保存抽卡结果和金币数</li>
+</ul>
+<h1 id="代码实现python">代码实现（python）</h1>
+<pre><code>{
+  '''
+Version: 2.0
+Autor: Wind Ho
+Date: 2021-11-24 22:42:35
+LastEditors: Wind Ho
+LastEditTime: 2021-11-24 23:36:52
+'''
+
+import random
+
+#抽卡游戏（原神版）
+
+#初始化
+money = 998
+item_n=[&quot;岩王帝君&quot;,&quot;卢锅巴&quot;,&quot;达达丽鸭&quot;,&quot;荒泷一抖&quot;]
+item_r=[&quot;刻晴小姐&quot;,&quot;雷电将军&quot;,&quot;古恩希尔德家的琴小姐&quot;,&quot;凝光小姐&quot;]
+item_sr=[&quot;安德留斯&quot;,&quot;奥罗巴斯&quot;,&quot;巴巴托斯&quot;,&quot;巴尔泽布&quot;]
+item_ssr=[&quot;萍姥姥&quot;,&quot;流云借风真君牌高压锅&quot;,&quot;锅巴&quot;,&quot;椒盐史莱姆&quot;]
+prob=[0.725,0.25,0.02,0.005]
+charge = 0
+times_total=[]
+times_n=[]
+times_r=[]
+times_sr=[]
+times_ssr=[]
+
+#定义一个抽卡函数
+def kacha(x):
+    if x&lt;prob[3]:
+        print(&quot;一道金光直冲云霄，你获得了&quot;,random.choice(item_ssr),&quot;，已经没有什么能阻拦你了!江山老婆我都要!&quot;,sep=&quot;&quot;)
+        times_ssr.append(1)
+    elif x&lt;prob[3]+prob[2]:
+        print(&quot;一道紫光直冲云霄，你获得了&quot;,random.choice(item_sr),&quot;，应该值不少钱，卖了抽老婆。&quot;,sep=&quot;&quot;)
+        times_sr.append(1)
+    elif x&lt;prob[3]+prob[2]+prob[1]:
+        print(&quot;一道闪电直冲云霄，你获得了&quot;,random.choice(item_r),&quot;，老婆又多了一个&quot;,sep=&quot;&quot;)
+        times_r.append(1)
+    else:
+        print(&quot;你看了眼从天而降的&quot;,random.choice(item_n),&quot;，把他扔到了垃圾桶。&quot;,sep=&quot;&quot;)
+        times_n.append(1)
+
+print(&quot;旅行者，欢迎来到提瓦特大陆！听从命运的召唤吧！\n 当前余额：&quot;, money,&quot;；抽卡总次数:&quot;,len(times_total),&quot;其中ssr:&quot;,len(times_ssr),&quot;次，sr:&quot;,len(times_sr),&quot;次，r:&quot;,len(times_r),&quot;次，n:&quot;,len(times_n),&quot;次。&quot;)
+
+#金币系统和抽卡函数组合
+while True: 
+    if money&gt;=100: 
+        print(&quot;=&quot;*70)
+        b = input(&quot;你砸锅卖铁，终于凑够了原石。怀着美好的憧憬祈愿，天空闪过一道璀璨的光芒……&quot;)
+        chance=random.random()
+        kacha(chance)
+        money -=100 
+        times_total.append(1)
+        print(&quot;当前余额：&quot;, money,&quot;；抽卡总次数:&quot;,len(times_total),&quot;其中ssr:&quot;,len(times_ssr),&quot;次，sr:&quot;,len(times_sr),&quot;次，r:&quot;,len(times_r),&quot;次，n:&quot;,len(times_n),&quot;次。&quot;)
+    else:
+        charge = input(&quot;当前余额已不足以进行一次抽卡，为了老婆，再氪点儿吧：&quot;)
+        if len(charge)!=0:
+            try: #try函数来对输入值进行判断，为整数正常充值，为非整数或字符串重新输入，为空结束（其实if也行）
+                charge = int(charge)
+            except(ValueError):
+                print(&quot;旅行者，请输入整数！&quot;)
+            else:
+                money = money + charge
+        else:
+            print(&quot;抽卡结束，下次一定出货&quot;)
+            break
+    
+#抽卡数据存档
+list_kacha = [money, len(times_total),len(times_ssr),len(times_sr),len(times_r),len(times_n)]
+f = open (&quot;kacha.txt&quot;,&quot;w+&quot;)  #创建一个kacha文档，向其中覆盖数据
+f.write(&quot;,&quot;.join(str(i) for i in list_kacha))
+f.close()
+
+#存档显示
+'''
+f = open (&quot;kacha.txt&quot;,&quot;r&quot;)
+print(f.read())
+'''
+}
+</code></pre>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://windho.github.io/post/grideagithub-pages-da-jian-ge-ren-zhu-ye-202111/">
+                  <h3 class="post-title">
+                    Gridea+Github Pages搭建个人主页（2021.11）
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>
